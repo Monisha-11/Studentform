@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student form</title>
+</head>
+
+<body>
+    <h1>STUDENT FORM</h1>
+    <form id="addform">
+        <table border="1">
+            <tr>
+                <td>Name</td>
+                <td><input type="text" placeholder="enter your name" id="inputbox"></td>
+            </tr>
+            <tr>
+                <td>age</td>
+                <td><input type="number" placeholder="enter your age" id="age"></td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td id="sex">
+                    <input type="radio" name="gender" value="Male"> Male&nbsp;
+                    <input type="radio" name="gender" value="Female"> Female
+                </td>
+            </tr>
+            <tr>
+                <td>Course</td>
+                <td>
+                    <select style="width: 100%;" id="course">
+                        <option>--NONE--</option>
+                        <option>JAVASCRIPT</option>
+                        <option>PYTHON</option>
+                        <option>HTML</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>e-mail</td>
+                <td><input type="email" placeholder="enter your email" id="mail"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button style="background-color:aqua; width: 100%;" id="btn">Save</button></td>
+            </tr>
+        </table>
+    </form>
+    <br><br>
+    <form>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Course</th>
+                    <th>E-Mail</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="container">
+
+            </tbody>
+        </table>
+    </form>
+
+    <script>
+        var input = document.getElementById("inputbox")
+        var age1 = document.getElementById("age")
+        var sex1 = document.getElementById("sex")
+        var course1 = document.getElementById("course")
+        var mail1 = document.getElementById("mail")
+        var btn = document.getElementById("btn")
+        var con = document.getElementById("container")
+
+        btn.addEventListener("click", function () {
+            event.preventDefault()
+            var tr = document.createElement("tr")
+            var name = document.createElement("td")
+            name.innerHTML = input.value
+            tr.append(name)
+
+            var age2 = document.createElement("td")
+            age2.innerHTML = age.value
+            tr.append(age2)
+
+            var gender = document.querySelector('input[name="gender"]:checked')
+            var sex2 = document.createElement("td")
+            sex2.innerHTML = gender ? gender.value : ""
+            tr.append(sex2)
+
+            var course2 = document.createElement("td")
+            course2.innerHTML = course.value
+            tr.append(course2)
+
+            var mail2 = document.createElement("td")
+            mail2.innerHTML = mail.value
+            tr.append(mail2)
+
+            var actionTd = document.createElement("td")
+            var deleteButton = document.createElement("button")
+            deleteButton.innerHTML = "Delete"
+            deleteButton.addEventListener("click", function() {
+                tr.remove()
+            })
+            actionTd.append(deleteButton)
+            tr.append(actionTd)
+            
+            container.append(tr)
+
+        })
+
+    </script>
